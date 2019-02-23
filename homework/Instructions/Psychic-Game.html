@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Psychic-Game</title>
+    <style>
+            body {
+              background-color: lightcyan;
+            }
+            
+            </style>
+
+    <h1>Psychic-Game</h1>
+    <p id="p1">Game Time!</p>
+    <p1>Can you guess what letter The Rock is thinking?!</p1>
+    <p>Wins: 
+        <span id="wins"></span>
+    </p>
+    <p>Loses: 
+            <span id="loses"></span>
+        </p>
+    <p>Guesses Left: 
+        <span id="guessesLeft"></span>
+            </p>
+    <p>Guessed Letters:<span id="guesses"></span></p>
+
+    <img src="Images/960.jpg">
+
+  
+  
+
+
+<script>
+
+
+
+    // Game Rule 
+    var wins = 0; 
+    var loses = 0;
+    var guessesLeft = 10;
+    
+    var keyLog = [];
+
+    var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_"];
+
+    alert("Guess any letter from the keyboard!");
+
+        
+     var computerGuess = letters[Math.floor(Math.random() * letters.length-1)]; 
+   
+
+console.log("computerGuess"), computerGuess;
+
+document.onkeyup = function(event) {
+    console.log(event.key)
+    var userGuess = event.key;
+    console.log(userGuess)
+
+    if (!letters.includes(userGuess)){
+        alert("Guess any letter from the keyboard!");
+    }else{
+
+    if(userGuess === computerGuess){
+     alert("Winner Winner Chichen Dinner - You Win!");
+     wins++;
+     loses--;
+     keyLog = [];
+     computerGuess = letters[Math.floor(Math.random() * letters.length-1)];
+     guessesLeft = 10;
+     
+     domUpdate();
+
+    }
+    else if(userGuess !== computerGuess && guessesLeft > 1){
+        alert("LOSER!!!");
+        guessesLeft--;
+        keyLog.push(userGuess);
+
+        domUpdate();
+        }
+
+    }
+}
+function domUpdate(){
+    document.getElementById("wins").textContent = wins;
+    document.getElementById("loses").textContent = loses;
+    document.getElementById("guessesLeft").textContent = guessesLeft;
+    document.getElementById("guesses").textContent = keyLog;
+
+}
+domUpdate()
+
+
+
+
+
+</script>
+    
+    
+</head>
+<body>
+    
+</body>
+</html>
