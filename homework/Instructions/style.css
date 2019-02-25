@@ -1,4 +1,30 @@
+
+body {
+  background-color: lightcyan;
+}
+
+#p{
+  color: red;
+    font-size: 50px;
+    text-align: center;
+}
+#h1{
+  font-size: 100px;
+
+}
+
 #p1{
     color: red;
+    font-size: 20px;
     text-align: center;
   }
+
+#TheRock{
+  height: 450px;
+  width: 450px;
+  
+}
+
+#fit-picture {
+  width: 250px;
+}

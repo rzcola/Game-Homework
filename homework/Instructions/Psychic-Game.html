@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Psychic-Game</title>
-    <style>
-            body {
-              background-color: lightcyan;
-            }
-            
-            </style>
+   
 
-    <h1>Psychic-Game</h1>
-    <p id="p1">Game Time!</p>
-    <p1>Can you guess what letter The Rock is thinking?!</p1>
+    <h1 id ="h">Psychic-Game</h1>
+
+    <p id="p">Game Time!</p>
+    <p1 id="p1">Can you guess what letter The Rock is thinking?!</p1>
     <p>Wins: 
         <span id="wins"></span>
     </p>
@@ -27,7 +23,13 @@
             </p>
     <p>Guessed Letters:<span id="guesses"></span></p>
 
-    <img src="Images/960.jpg">
+    <img 
+    class="fit image"
+    src="Images/960.jpg" 
+    id= "TheRock"
+    />
+
+
 
   
   
@@ -54,11 +56,16 @@
 
 console.log("computerGuess"), computerGuess;
 
+// When user hits Letter on keyboard this functions runs 
+
 document.onkeyup = function(event) {
     console.log(event.key)
+// equals the key that was pressed to trigger the function
     var userGuess = event.key;
     console.log(userGuess)
 
+
+//  includes runs through array to find a match if this is true if not alert will show
     if (!letters.includes(userGuess)){
         alert("Guess any letter from the keyboard!");
     }else{
@@ -66,21 +73,32 @@ document.onkeyup = function(event) {
     if(userGuess === computerGuess){
      alert("Winner Winner Chichen Dinner - You Win!");
      wins++;
-     loses--;
      keyLog = [];
      computerGuess = letters[Math.floor(Math.random() * letters.length-1)];
+    //  Starting the game over....what is this doing and why? 
      guessesLeft = 10;
-     
-     domUpdate();
+
+    //  resets the gueses 
+
+    
+    
+    }
+
+    else if (keyLog.includes(userGuess)) {
+        console.log("guess was already made")
+        alert("Guess was already made!")
 
     }
+
     else if(userGuess !== computerGuess && guessesLeft > 1){
         alert("LOSER!!!");
+        loses++;
         guessesLeft--;
         keyLog.push(userGuess);
 
-        domUpdate();
+    
         }
+   domUpdate();
 
     }
 }
@@ -91,7 +109,7 @@ function domUpdate(){
     document.getElementById("guesses").textContent = keyLog;
 
 }
-domUpdate()
+
 
 
 
